@@ -1,0 +1,101 @@
+
+/* Body */
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg,rgb(164, 201, 233),rgb(255, 255, 255) );
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+/* Header */
+#mainHeader{
+    padding: 0;
+    margin: 0;
+    height: 200px;
+    /* background-color:rgb(164, 201, 233); */
+    
+}
+
+#headerText{
+    margin: 0;
+    padding-top: 60px;
+    text-align: center;
+
+}
+
+/* Container */
+.container{
+    width: 500px;
+    margin: auto;
+
+}
+
+/* Converter */
+#converter{
+    margin: auto;
+    text-align: center;
+
+}
+
+#converterInput{
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    border-color: Transparent;
+    text-align: center;
+}
+
+.input:focus{
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/* Classes */
+.classes{
+    position: fixed;
+    left: 1320px;
+    /* background: rgba(58, 104, 104, 0.534) ; */
+    height: 900px;
+    padding-top: 240px;
+}
+
+.classes h1{
+    border: 3px solid  #5f5f5f;
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.classes #noun{
+    background-color: #f76e6e;
+}
+.classes #adjective{
+    background-color: #ffe493;
+}
+.classes #verb{
+    background-color: #93aeff;
+}
+.classes #pronoun{
+    background-color: #87ffc7;
+}
+.classes #adverb{
+    background-color: #da86c5;
+}
+.classes #conjuction{
+    background-color: #889b1e;
+}
+.classes #interjection{
+    background-color: #bfff87;
+}
+.classes #preposition{
+    background-color: #a3f8d0;
+}
+.classes #unknown{
+    /* background-color: #ffffffb7; */
+}
