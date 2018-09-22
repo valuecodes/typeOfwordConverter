@@ -124,7 +124,7 @@ function clear(type){
         var span2 = document.getElementById("outputType");
         while(span2.firstChild) span2.removeChild(span2.firstChild); 
     }else if(type==3){
-        var svg = document.getElementsByTagNameNS("svg");
+        var svg = document.getElementById("chart");
         while(svg.firstChild) svg.removeChild(svg.firstChild); 
     }
 }
@@ -195,26 +195,58 @@ let countData=(arr)=>{
 }
 
 let createBarChart=(data)=>{
-    // let svgData=[];
-    // for(var i=0;i<data.length;i++){
-    //     svgData.push([data[i].type,data[i].total])
-    // }
-    // console.log(svgData);
-    // const w = 500;
-    // const h = 500;
-    // const padding = 60;
+    
+    clear(3);
+    let svgData=[];
+    for(var i=0;i<data.length;i++){
+        svgData.push([data[i].type,data[i].total])
+    }
+    console.log(svgData);
+
+    const w = 500;
+    const h = 300;
+    const padding = 60;
     
 
-    // const svg = d3.select("body")
-    //               .append("svg")
-    //               .attr("width", w)
-    //               .attr("height", h);
-    
-    //               svg.selectAll("circle")
-    //               .data(dataset)
-    //               .enter()
-    //               .append("circle")
-    //               .attr("r", (d) => 5)
-    //               .attr("fill", "red");
-    //    clear(3);
+    const svg = d3.select("#chart")
+                  .append("svg")
+                  .attr("width", w)
+                  .attr("height", h);
+
+
+                 // Vertical
+
+                svg.selectAll("rect")
+                  .data(svgData)
+                  .enter()
+                  .append("rect")
+                  .attr("x", (d, i) => i * 45)
+                  .attr("y", (d, i) => h - 3 * d[1])
+                  .attr("width", 32)
+                  .style("height", (d) => d[1]*6+"px");
+
+                // Text
+
+                // svg.selectAll("text")
+                // .data(svgData)
+                // .enter()
+                // .append("text")
+                // .text((d) => d[0])
+                // .attr("x", (d, i) => i * 45)
+                //   .attr("y", (d, i) => h - 3 * d[1])
+
+
+                //   Horizontal
+                //   svg.selectAll("rect")
+                //   .data(svgData)
+                //   .enter()
+                //   .append("rect")
+                //   .attr("y", (d, i) =>i * 45)
+                //   .attr("x", (d, i) =>0 )
+                //   .attr("height", 32)
+                //   .style("width", (d) => d[1]*6+"px");
+   
+                
+
+                
 }

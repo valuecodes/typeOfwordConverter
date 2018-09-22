@@ -100,12 +100,28 @@ body{
     /* background-color: #ffffffb7; */
 }
 
+/* Chart */
+#chart{
+    position: fixed;
+    left: 200px;
+    top: 200px;
+}
+
+svg{
+
+}
+
+rect{
+    z-index: -1;
+
+}
+
 /* @media screen and (max-width: 770px) {
     .classes{
         position: static;
         left: 65%;
         /* background: rgba(58, 104, 104, 0.534) ; */
-        height: 900px;
+        /* height: 900px; */
         /* padding-top: 140px; */
-    }
-} */
+    /* } */
+/* } */ 
