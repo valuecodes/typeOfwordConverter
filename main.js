@@ -64,7 +64,6 @@ function myFunction1(xhttp) {
             if(flag==0 && word!==""){
                 typeOfWord.push(undefined);
             }
-            // document.getElementById('outputType').innerHTML=typeOfWord.join(" ");
 
             // Cleans string to Object
             arr=toObject(typeOfWord);
@@ -72,7 +71,9 @@ function myFunction1(xhttp) {
             
             // Output text
             outputText(arr);
-
+            
+            // Count Data for statistics
+            countData(arr);
 
         }
         // Clears everything every time user inputs 
@@ -80,7 +81,7 @@ function myFunction1(xhttp) {
     }
 } 
 
-
+// Cleans string to Object
 let toObject=(str)=>{
     let temp = str.join(" ").split("/");
     let arr=[];
@@ -102,6 +103,7 @@ let toObject=(str)=>{
     return arr;
 }
 
+// Output text
 let outputText=(arr)=>{
     clear(2);
     createOutput(arr);
@@ -121,6 +123,9 @@ function clear(type){
     }else if(type==2){
         var span2 = document.getElementById("outputType");
         while(span2.firstChild) span2.removeChild(span2.firstChild); 
+    }else if(type==3){
+        var svg = document.getElementsByTagNameNS("svg");
+        while(svg.firstChild) svg.removeChild(svg.firstChild); 
     }
 }
 
@@ -132,7 +137,7 @@ let getColor=(arr)=>{
         case "noun":return "#f76e6e";
         case "adverb":return "#da86c5";
         case "conjuction":return "#889b1e";
-        case "preposition":return "#a3f8d";
+        case "preposition":return "#bb7a3c";
         case "interjection":return "#bfff87";
         case "relativePronoun": return "#87ffc7";
         case "personalPronoun": return "#87ffc7";
@@ -155,4 +160,61 @@ let createOutput=(arr)=>{
             out.appendChild(p);
             p.appendChild(text);
     }
+}
+
+// Count Data for statistics
+let countData=(arr)=>{
+
+    let typeArray=new Array;
+    let typeA;
+    let types=[];
+
+    for(var i=0;i<arr.length;i++){
+        for(var j=0;j<arr[i].type.length;j++){
+            if(arr[i].type[j]!==undefined){
+                if(typeArray.includes(arr[i].type[j])===false){
+                    typeArray.push(arr[i].type[j]);
+                    typeA=(arr[i].type[j]);
+                    let obj={type:typeA,total:1};
+                    types.push(obj);
+                }else{
+                for(var k=0;k<types.length;k++){
+                    if(types[k].type==arr[i].type[j]){
+                        types[k].total++;
+                    }
+                }
+                } 
+            } 
+        }
+    }
+
+    // Create bar chart
+    createBarChart(types);
+
+    console.log(types);
+}
+
+let createBarChart=(data)=>{
+    // let svgData=[];
+    // for(var i=0;i<data.length;i++){
+    //     svgData.push([data[i].type,data[i].total])
+    // }
+    // console.log(svgData);
+    // const w = 500;
+    // const h = 500;
+    // const padding = 60;
+    
+
+    // const svg = d3.select("body")
+    //               .append("svg")
+    //               .attr("width", w)
+    //               .attr("height", h);
+    
+    //               svg.selectAll("circle")
+    //               .data(dataset)
+    //               .enter()
+    //               .append("circle")
+    //               .attr("r", (d) => 5)
+    //               .attr("fill", "red");
+    //    clear(3);
 }

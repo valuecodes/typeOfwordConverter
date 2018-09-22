@@ -58,10 +58,10 @@ body{
 /* Classes */
 .classes{
     position: fixed;
-    left: 1320px;
+    left: 65%;
     /* background: rgba(58, 104, 104, 0.534) ; */
     height: 900px;
-    padding-top: 240px;
+    padding-top: 140px;
 }
 
 .classes h1{
@@ -94,8 +94,18 @@ body{
     background-color: #bfff87;
 }
 .classes #preposition{
-    background-color: #a3f8d0;
+    background-color: #f8cca3;
 }
 .classes #unknown{
     /* background-color: #ffffffb7; */
 }
+
+/* @media screen and (max-width: 770px) {
+    .classes{
+        position: static;
+        left: 65%;
+        /* background: rgba(58, 104, 104, 0.534) ; */
+        height: 900px;
+        /* padding-top: 140px; */
+    }
+} */
