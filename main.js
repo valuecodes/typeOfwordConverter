@@ -26,7 +26,7 @@ function myFunction1(xhttp) {
         let convertValue=document.getElementById('converterInput').value;
         
         let input=convertValue.split(" ");
-        console.log(input.length);
+        // console.log(input.length);
         clear(1);
     
         // var out=document.getElementById('outputWord');
@@ -148,6 +148,7 @@ let getColor=(arr)=>{
         case "possessivePronoun": return "#87ffc7";
         case "demonstrativePronoun": return "#87ffc7";
         case "archaicPronouns": return "#87ffc7";
+        case "interrogativePronoun": return "#87ffc7";
     }
 }
 
@@ -191,7 +192,7 @@ let countData=(arr)=>{
     // Create bar chart
     createBarChart(types);
 
-    console.log(types);
+    // console.log(types);
 }
 
 let createBarChart=(data)=>{
@@ -201,17 +202,30 @@ let createBarChart=(data)=>{
     for(var i=0;i<data.length;i++){
         svgData.push([data[i].type,data[i].total])
     }
-    console.log(svgData);
 
     const w = 500;
-    const h = 300;
+    const h = 400;
     const padding = 60;
     
-
+    // Chart
     const svg = d3.select("#chart")
                   .append("svg")
                   .attr("width", w)
                   .attr("height", h);
+
+    let max=0;
+
+    for(i=0;i<svgData.length;i++){
+        if(max<svgData[i][1]){
+            max=svgData[i][1];
+        }
+    }
+
+    console.log(max);
+
+    var linearScale=d3.scale.linear()
+    .domain([0,max])
+    .range([0,300]);
 
 
                  // Vertical
@@ -221,20 +235,47 @@ let createBarChart=(data)=>{
                   .enter()
                   .append("rect")
                   .attr("x", (d, i) => i * 45)
-                  .attr("y", (d, i) => h - 3 * d[1])
+                  .attr("y", (d, i) => (h - linearScale(d[1])-100))
                   .attr("width", 32)
-                  .style("height", (d) => d[1]*6+"px");
+                  .style("height", (d) => linearScale(d[1])+"px")
+                  .attr("fill",(d)=>{
+                      return getColor(d);
+                  });
 
                 // Text
 
-                // svg.selectAll("text")
-                // .data(svgData)
-                // .enter()
-                // .append("text")
-                // .text((d) => d[0])
-                // .attr("x", (d, i) => i * 45)
-                //   .attr("y", (d, i) => h - 3 * d[1])
+                svg.selectAll("text")
+                .data(svgData)
+                .enter()
+                .append("text")
+                .style('text-anchor', 'start')
+                .text((d) => d[0])
+                .attr("x", (d, i) => -290)
+                .attr("y", (d, i) =>22+(i * +45) )
+                .attr("fill","black")
+                .attr("transform", "rotate(270)");
 
+                svg.selectAll("text.value")
+                .data(svgData)
+                .enter()
+                .append("text")
+                .attr("class","value")
+                .text((d) => d[1])
+                .attr("x", (d, i) => {
+                    if(d[1]<10){
+                       return (i * 45)+7;
+                    }
+                    return i * 45;
+                    
+
+                })
+                .attr("y", (d, i) => 330)
+                .style("font-size", "25px");
+                // .attr("x", (d, i) => -290)
+                // .attr("y", (d, i) =>22+(i * +45) )
+                // .attr("fill","black")
+                // // .style("text-anchor", "bottom")
+                // .attr("transform", "rotate(270)");
 
                 //   Horizontal
                 //   svg.selectAll("rect")
@@ -246,7 +287,5 @@ let createBarChart=(data)=>{
                 //   .attr("height", 32)
                 //   .style("width", (d) => d[1]*6+"px");
    
-                
-
                 
 }
