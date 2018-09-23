@@ -1,4 +1,7 @@
 # typeOfwordConverter
+
+https://codepen.io/valuecodes/pen/qMwoPB
+
 Converts English words and phrases to type of words 
 
 Type or copy paste words or phrases and press space.
