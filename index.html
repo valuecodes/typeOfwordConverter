@@ -11,37 +11,36 @@
     
     <header id="mainHeader">
         <h1 id="headerText">Type Of Word</h1>
-            <div class="classes">
-                <h1 id="noun">Noun</h1>
-                <h1 id="adjective">Adjective</h1>
-                <h1 id="verb">Verb</h1>
-                <h1 id="pronoun">Pronoun</h1>
-                <h1 id="adverb">Adverb</h1>
-                <h1 id="conjuction">Conjuction</h1>
-                <h1 id="interjection">Interjection</h1>
-                <h1 id="preposition">Preposition</h1>
-                <h1 id="unknown">Unknown</h1>
-            </div>
+            
         </nav>
         <nav>
         
     </header>
-    
     <main>
         <div class="container">
             <div id="converter">
                 <textarea style="overflow:auto" class="input" type="text" id="converterInput" placeholder="Enter a word or phrase and press space" wrap="soft"></textarea>
                 <div class="buttons">
                     <button class="button" id="randomPhrase" onclick="getPhrase()">Random Phrase</button>
+                    <button class="button" id="convert">Convert</button>
                 </div>
-                
+                <div id="chart"></div>
+                <div class="classes">
+                    <h1 id="noun">Noun</h1>
+                    <h1 id="adjective">Adjective</h1>
+                    <h1 id="verb">Verb</h1>
+                    <h1 id="pronoun">Pronoun</h1>
+                    <h1 id="adverb">Adverb</h1>
+                    <h1 id="conjuction">Conjuction</h1>
+                    <h1 id="interjection">Interjection</h1>
+                    <h1 id="preposition">Preposition</h1>
+                    <h1 id="unknown">Unknown</h1>
+                </div>
                 <h1 id="outputWord"></h1>
                 <h1 id="outputType"></h1>
             </div>
         </div>
     </main>
-    <div id="chart">
-
     </div>
     <script src="main.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
