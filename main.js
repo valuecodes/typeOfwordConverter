@@ -285,7 +285,11 @@ let createBarChart=(data)=>{
                 //   .attr("y", (d, i) =>i * 45)
                 //   .attr("x", (d, i) =>0 )
                 //   .attr("height", 32)
-                //   .style("width", (d) => d[1]*6+"px");
-   
-                
+                //   .style("width", (d) => d[1]*6+"px");            
+}
+
+// Buttons
+
+let getPhrase=()=>{
+    console.log(1);
 }
